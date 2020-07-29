@@ -1,5 +1,11 @@
-2020-07-22 16:39:18,312 DEBUG [org.mybatis.spring.SqlSessionUtils] Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1436a7ab]
-2020-07-22 16:39:18,314  INFO [jdbc.connection] 1. Connection closed  org.springframework.jdbc.datasource.DataSourceUtils.doCloseConnection(DataSourceUtils.java:348)
-2020-07-22 16:39:18,314 DEBUG [jdbc.connection] open connections:  none
-2020-07-22 16:39:18,314 DEBUG [jdbc.audit] 1. Connection.close() returned   org.springframework.jdbc.datasource.DataSourceUtils.doCloseConnection(DataSourceUtils.java:348)
-2020-07-22 16:39:18,315 DEBUG [org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener] After test method: context [DefaultTestContext@369f73a2 testClass = DataSourceTest, testInstance = org.edu.test.DataSourceTest@2788d0fe, testMethod = testSelectMember@DataSourceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1f28c152 testClass = DataSourceTest, locations = '{file:src/main/webapp/WEB-INF/spring/**/*.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+2020-07-29 17:16:34,272 DEBUG [org.springframework.test.context.web.ServletTestExecutionListener] Resetting RequestContextHolder for test context [DefaultTestContext@6ddf90b0 testClass = DataSourceTest, testInstance = org.edu.test.DataSourceTest@43f61afb, testMethod = testInsertMember@DataSourceTest, testException = org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (XE.MEMBER_PK) violated
+
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into tbl_member (user_id,user_pw,user_name,email,point,enabled,levels,reg_date)        values (?,?,?,?,?,?,?,sysdate)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (XE.MEMBER_PK) violated
+
+; SQL []; ORA-00001: unique constraint (XE.MEMBER_PK) violated
+; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (XE.MEMBER_PK) violated
+, mergedContextConfiguration = [WebMergedContextConfiguration@57536d79 testClass = DataSourceTest, locations = '{file:src/main/webapp/WEB-INF/spring/**/*.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]].

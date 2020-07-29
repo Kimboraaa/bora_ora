@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.edu.dao.IF_BoardDAO;
 import org.edu.dao.IF_MemberDAO;
+import org.edu.dao.IF_ReplyDAO;
 import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
@@ -54,6 +55,7 @@ public class BoardServiceImpl implements IF_BoardService {
 	@Transactional
 	@Override
 	public void deleteBoard(Integer bno) throws Exception {
+		boardDAO.deleteBoardReply(bno);
 		boardDAO.deleteAttach(bno);
 		boardDAO.deleteBoard(bno);
 	}
