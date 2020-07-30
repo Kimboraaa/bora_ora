@@ -23,11 +23,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <sql id="sqlWhere">
       <if test="searchType !=null">
          AND (
-         title LIKE CONCAT('%',#{searchKeyword},'%')
+         title LIKE '%'||#{searchKeyword}||'%'
          OR
-         content LIKE CONCAT('%',#{searchKeyword},'%')
+         content LIKE '%'||#{searchKeyword}||'%'
          OR
-         writer LIKE CONCAT('%',#{searchKeyword},'%')
+         writer LIKE '%'||#{searchKeyword}||'%'
          )
       </if>
    </sql>
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 속성중에 order는 insert 이전 이후 구분하는 역할 --> 
    <insert id="insertBoard">
       <selectKey keyProperty="bno" resultType="int" order="BEFORE">
-         SELECT SEQ_BNO.nextval FROM DAUL
+         SELECT SEQ_BNO.nextval FROM DUAL
       </selectKey>
       insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count) 
       values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count}) 
@@ -91,9 +91,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    insert into tbl_attach(full_name, bno) values (#{fullname},LAST_INSERT_ID())
    </insert>
    -->
-   <!-- 첨부파일 HSql용 -->
+   <!-- 첨부파일 HSql용 
    <insert id="insertAttach">
    insert into tbl_attach(full_name, bno) values (#{fullname}, (select top 1 bno from tbl_board order by bno desc) )
+   </insert>
+   -->
+   <!-- 첨부파일 Oracle용에서 사용되는 최근게시물 번호 -->
+   <select id="selectTopBno" resultType="int">
+   		select bno from (
+    		select bno from tbl_board order by bno desc
+		) T_A
+		where ROWNUM = 1
+   </select>
+   <!-- 첨부파일 Oracle용 -->
+   <insert id="insertAttach">
+   	  <selectKey keyProperty="bno" resultType="int" order="BEFORE">
+         SELECT SEQ_BNO.currval FROM DUAL
+      </selectKey>
+   insert into tbl_attach(full_name, bno) values (#{fullname}, #{bno})
    </insert>
    
    <select id="selectAttach" resultType="string">

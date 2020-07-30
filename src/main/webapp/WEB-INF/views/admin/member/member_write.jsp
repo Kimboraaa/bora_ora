@@ -73,14 +73,14 @@
                               <div class="form-group">
                                  <label>point</label> 
                                  <input name="point" type="text" class="form-control"
-                                    placeholder="0">
+                                    value="0">
                               </div>
                            </div>
                            <div class="form-group">
                         <label>enabled</label>
-                        <select class="form-control">
+                        <select name="enabled" class="form-control">
                           <option value="0">false</option>
-                          <option value="1" selected>true</option>
+                          <option value="1">true</option>
                         </select>
                         <label>level</label>
                         <select name="levels" class="form-control">
