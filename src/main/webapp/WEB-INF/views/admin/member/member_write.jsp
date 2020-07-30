@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="../include/header.jsp"  %>
- 
-       <!-- Content Wrapper. Contains page content -->
+<%@ include file="../include/header.jsp" %>
+
+<!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
          <!-- Content Header (Page header) -->
          <div class="content-header">
@@ -80,7 +80,7 @@
                         <label>enabled</label>
                         <select name="enabled" class="form-control">
                           <option value="0">false</option>
-                          <option value="1">true</option>
+                          <option value="1" selected>true</option>
                         </select>
                         <label>level</label>
                         <select name="levels" class="form-control">
@@ -102,9 +102,10 @@
                   <div class="content"></div>
                   <!-- .content  -->
                </div>
+               
             </div>
          </div>
       </div>
-      <!--Content Wrapper-->
-         
-<%@ include file="../include/footer.jsp"  %>
+      <!-- ./Content Wrapper -->
+
+<%@ include file="../include/footer.jsp" %> 

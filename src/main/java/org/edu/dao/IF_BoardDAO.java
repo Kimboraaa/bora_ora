@@ -6,6 +6,8 @@ import org.edu.vo.BoardVO;
 import org.edu.vo.PageVO;
 
 public interface IF_BoardDAO {
+	public int selectTopBno() throws Exception;
+	public void deleteBoardReply(Integer bno) throws Exception;
 	public void insertBoard(BoardVO boardVO) throws Exception;
 	public List<BoardVO> selectBoard(PageVO pageVO) throws Exception;
 	public void updateBoard(BoardVO boardVO) throws Exception;
@@ -17,6 +19,4 @@ public interface IF_BoardDAO {
 	public void updateAttach(String fullName, Integer bno) throws Exception;
 	public int countBno(PageVO pageVO) throws Exception;
 	public void updateViewCount(Integer bno) throws Exception;
-	public void deleteBoardReply(Integer bno) throws Exception;
-	public int selectTopBno() throws Exception;
 }

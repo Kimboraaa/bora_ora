@@ -21,6 +21,7 @@
       <beans:property name="prefix" value="/WEB-INF/views/" />
       <beans:property name="suffix" value=".jsp" />
    </beans:bean>
+   
    <context:component-scan base-package="org.edu.controller" />
    <context:component-scan base-package="org.edu.util" />
    <!-- html폼에서 첨부파일 업로드 설정 10메가 제한 -->
@@ -34,10 +35,10 @@
        </beans:constructor-arg>
    </beans:bean>
    -->
-   <!-- 업로드한 파일이 저장되는 위치: 로컬PC용 -->   
+   <!-- 업로드한 파일이 저장되는 위치: 로컬PC용 -->
    <beans:bean id="uploadPath" class="java.lang.String">
        <beans:constructor-arg value="C:\\egov\\workspace\\upload">
        </beans:constructor-arg>
    </beans:bean>
-
+   
 </beans:beans>

@@ -30,6 +30,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          writer LIKE '%'||#{searchKeyword}||'%'
          )
       </if>
+      <if test="searchBoard !=null and !searchBoard.equals('')">
+       AND (
+         bod_type = #{searchBoard}
+         )
+      </if>
    </sql>
    <!-- mybatis 오라클용 추가 -->
    <!-- 속성중에 order는 insert 이전 이후 구분하는 역할 --> 
@@ -37,8 +42,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <selectKey keyProperty="bno" resultType="int" order="BEFORE">
          SELECT SEQ_BNO.nextval FROM DUAL
       </selectKey>
-      insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count) 
-      values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count}) 
+      insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count,bod_type) 
+      values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count},#{bod_type}) 
    </insert>
    <select id="selectBoard" resultType="org.edu.vo.BoardVO">
       <![CDATA[
@@ -72,7 +77,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       writer = #{writer},
       update_date = sysdate,
       view_count = #{view_count},
-      reply_count = #{reply_count}
+      reply_count = #{reply_count},
+      bod_type = #{bod_type}
       where bno = #{bno}
    </update>
    <delete id="deleteBoard">
@@ -98,14 +104,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    -->
    <!-- 첨부파일 Oracle용에서 사용되는 최근게시물 번호 -->
    <select id="selectTopBno" resultType="int">
-   		select bno from (
-    		select bno from tbl_board order by bno desc
-		) T_A
-		where ROWNUM = 1
+         select bno from(
+select bno from tbl_board order by bno desc
+) T_A
+where ROWNUM = 1
    </select>
    <!-- 첨부파일 Oracle용 -->
    <insert id="insertAttach">
-   	  <selectKey keyProperty="bno" resultType="int" order="BEFORE">
+        <selectKey keyProperty="bno" resultType="int" order="BEFORE">
          SELECT SEQ_BNO.currval FROM DUAL
       </selectKey>
    insert into tbl_attach(full_name, bno) values (#{fullname}, #{bno})
