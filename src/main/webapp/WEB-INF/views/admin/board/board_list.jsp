@@ -31,8 +31,8 @@
                 <div class="col-3" style="display:inline-block" >
                     <select name="searchBoard" class="form-control">
                       <option value="">게시판선택</option>
-                      <option value="notice">공지사항</option>
-                      <option value="gallery">갤러리</option>
+                      <option value="notice" <c:out value="${(session_bod_type eq 'notice')?('selected'):''}" />>공지사항</option>
+                      <option value="gallery" <c:out value="${(session_bod_type eq 'gallery')?('selected'):''}" />>갤러리</option>
                     </select>
                 </div>
                 <div class="col-3" style="display:inline-block" >
@@ -68,24 +68,26 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                   <thead>
-                    <tr>
-                      <th>BNO</th>
+                    <tr>                      
+                      <th>RNUM</th>
                       <th>TITLE</th>
                       <th>WRITE</th>
                       <th>REGDATE</th>
                       <th>VIEWCNT</th>
+                      <th>게시판타입</th>
                     </tr>
                   </thead>
                   <tbody>
                     <c:forEach items="${boardList}" var="boardVO" varStatus="status">
-                    <tr>
-                      <td>${boardVO.bno}</td>
+                    <tr>                      
+                      <td>${boardVO.rnum}</td>
                       <td><a href="/admin/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>
                       <td>${boardVO.writer}</td>
                       <td><span class="tag tag-success">
                       <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" />
                       </span></td>
                       <td><span class="badge badge-danger right">${boardVO.view_count}</span></td>
+                      <td>${boardVO.bod_type}</td>
                     </tr>
                     </c:forEach>
                   </tbody>

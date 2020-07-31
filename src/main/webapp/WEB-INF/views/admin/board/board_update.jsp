@@ -32,24 +32,40 @@
 						<!-- /.card-header -->
 						<div class="card-body">
 							<form role="form" action="/admin/board/update" method="post" encType="multipart/form-data">
-								<div class="row">
-									<div class="col-sm-12">
-										<!-- text input -->
-										<div class="form-group">
-											<label>Title</label> 
-											<input value="${boardVO.title}" name="title" type="text" class="form-control"
-												placeholder="Enter Title">
-										</div>
-									</div>
-									<div class="col-sm-12">
-										<div class="form-group">
-											<label>Content</label> 
-											<textarea name="content" class="form-control" rows="3"
-												placeholder="Enter Writer">${boardVO.content}</textarea>
-										</div>
-									</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<!-- select option -->
+								<div class="form-group">
+									<label>게시판선택</label>
+									<div class="app_content">
+									<div class="select_common"> 
+									<select name="bod_type"class="form-control" required>
+										<option value="">게시판선택</option>
+										<option value="notice"
+											<c:out value="${(boardVO.bod_type eq 'notice')?('selected'):''}" />>공지사항</option>
+										<option value="gallery"
+											<c:out value="${(boardVO.bod_type eq 'gallery')?('selected'):''}" />>갤러리</option>
+									</select>
 								</div>
-								<div class="row">
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<!-- text input -->
+								<div class="form-group">
+									<label>Title</label> <input value="${boardVO.title}"
+										name="title" type="text" class="form-control"
+										placeholder="Enter Title">
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>Content</label>
+									<textarea name="content" class="form-control" rows="3"
+										placeholder="Enter Writer">${boardVO.content}</textarea>
+								</div>
+							</div>
+						</div>
+						<div class="row">
 									<div class="col-sm-12">
 										<!-- textarea -->
 										<div class="form-group">

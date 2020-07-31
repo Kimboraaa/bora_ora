@@ -16,6 +16,7 @@ public class BoardVO {
    private int view_count;
    private int reply_count;
    private String bod_type;
+   private Integer rnum;//오라클에서 생성된 rownum 행번호 필드 get,set
    
    
    
@@ -80,11 +81,17 @@ public class BoardVO {
    public void setFiles(String[] files) {
       this.files = files;
    }
-public String getBod_type() {
-   return bod_type;
-}
-public void setBod_type(String bod_type) {
-   this.bod_type = bod_type;
-}
+   public String getBod_type() {
+	   return bod_type;
+   }
+   public void setBod_type(String bod_type) {
+	   this.bod_type = bod_type;
+   }
+   public Integer getRnum() {
+	   return rnum;
+   }
+   public void setRnum(Integer rnum) {
+	   this.rnum = rnum;
+   }
 
 }
