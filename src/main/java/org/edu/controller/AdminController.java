@@ -57,7 +57,7 @@ public class AdminController {
       List<BoardTypeVO> list = boardService.selectBoardType();
       model.addAttribute("bodTypeList", list);
       
-      return "admin/board/board_list";
+      return "admin/bodtype/bodtype_list";
    }
    
    /**
