@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import org.edu.service.IF_BoardService;
 import org.edu.service.IF_MemberService;
 import org.edu.util.FileDataUtil;
+import org.edu.vo.BoardTypeVO;
 import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
@@ -51,28 +52,11 @@ public class AdminController {
     * 게시물생성 리스트 입니다.
     * @throws Exception 
     */
-   @RequestMapping(value = "/boardtype/list", method = RequestMethod.GET)
-   public String boardList(@ModelAttribute("pageVO") PageVO pageVO , Locale locale, Model model, HttpServletRequest request) throws Exception {
-       //초기 메뉴를 클릭시 /admin/board/list?searchBoard=notice 데이터 전송
-	   HttpSession session = request.getSession();
-	   if(pageVO.getSearchBoard() != null) {    	   
-    	   session.setAttribute("session_bod_type", pageVO.getSearchBoard());
-       }else {
-    	   //일반링크 클릭시 /admin/board/view?page=2...데이터 전송
-    	   //만들어진 세션 사용(아래)
-    	   pageVO.setSearchBoard((String) session.getAttribute("session_bod_type"));
-       }
-	   //PageVO pageVO = new PageVO();//매개변수로 받기전에 테스트용
-     if(pageVO.getPage() == null) { //초기 page변수값 지정
-        pageVO.setPage(1);
-     } 
-      pageVO.setPerPageNum(10); //1페이지당 보여줄 게시물 수 강제지정 
-      pageVO.setTotalCount(boardService.countBno(pageVO));//강제로 입력한 값을 쿼리로 대체OK.
-      List<BoardVO> list = boardService.selectBoard(pageVO);
-      //모델클래스로 jsp화면으로 boardService에서 셀렉트한 list값을 boardList변수명으로 보낸다.
-      //model { list -> boardList -> jsp }
-      model.addAttribute("boardList", list);
-      model.addAttribute("pageVO" , pageVO);
+   @RequestMapping(value = "/bodtype/list", method = RequestMethod.GET)
+   public String bodTypeList(Locale locale, Model model) throws Exception {
+      List<BoardTypeVO> list = boardService.selectBoardType();
+      model.addAttribute("bodTypeList", list);
+      
       return "admin/board/board_list";
    }
    
