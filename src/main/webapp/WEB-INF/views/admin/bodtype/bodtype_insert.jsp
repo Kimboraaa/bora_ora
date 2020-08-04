@@ -39,7 +39,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-              <form role="form" action="/admin/bodtype/insert" method="post">
+              <form role="form" action="/admin/bodtype/write" method="post">
 						<div class="row">						
 							
 							<div class="col-sm-12">
