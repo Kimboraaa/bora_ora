@@ -51,4 +51,9 @@ public class MemberDAOImpl implements IF_MemberDAO {
 		return sqlSession.selectOne(mapperQuery + ".countUserId", pageVO);
 	}
 
+	@Override
+	public List<MemberVO> testJobMethod() throws Exception {
+		return sqlSession.selectList(mapperQuery +".testJobMethod");
+	}
+
 }

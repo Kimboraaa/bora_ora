@@ -16,10 +16,11 @@
     <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
    </security:session-management>
    <!-- 특정 url 패턴과 그것에 대한 권한 해제를 위해서  -->
+   <security:intercept-url pattern="/admin/member/idcheck" access="permitAll" />
    <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
    <security:intercept-url pattern="/**/write" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" method="GET"/>
-        <security:intercept-url pattern="/**/update" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
-        <security:intercept-url pattern="/**/delete" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/> 
+   <security:intercept-url pattern="/**/update" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+   <security:intercept-url pattern="/**/delete" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/> 
    <security:intercept-url pattern="/**" access="permitAll"/>
    <security:csrf disabled="true" />
    <security:form-login 
