@@ -7,8 +7,8 @@
 				<li><a href="/resources/home/javascript:;">개인정보취급방침</a></li>
 			</ul>
 			<h2>스프링</h2>
-            <p class="addr">OOOO OOOOO OOOO OOOOOOOOO OOOOO <span class="gubun">/</span>        
-				<span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>        
+            <p class="addr">사업자 주소 : 서울특별시 송파구 올림픽로 25 잠실야구장내 두산베어스 <span class="gubun">/</span>        
+				<span class="br_line">대표전화 <span class="space0">02-2240-1777</span> <span class="gubun">/</span>        
 					<span class="br_line">E-mail : <span class="space0"> admin@OOOO OOOOO.com</span></span>
 				</span>
 			</p>
